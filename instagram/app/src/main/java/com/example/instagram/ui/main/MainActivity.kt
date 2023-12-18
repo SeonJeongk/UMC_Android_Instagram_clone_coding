@@ -1,8 +1,7 @@
-package com.example.instagram.ui.main
+package com.example.instagram
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.instagram.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
