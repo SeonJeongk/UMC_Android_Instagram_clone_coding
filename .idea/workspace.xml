@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7ed2507e-adf5-4344-b286-7140053f22bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/Grid.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/Series.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/add.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/bookmark.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/burger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/mentions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/messenger.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/more.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/notifiations.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/share.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instagram/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/.idea/kotlinc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/androidTest/java/com/example/instagram/ExampleInstrumentedTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/java/com/example/instagram/ui/main/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-anydpi/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-anydpi/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-hdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-mdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/values-night/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/values/themes.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/xml/backup_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/app/src/test/java/com/example/instagram/ExampleUnitTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instagram/settings.gradle" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2ZivtnUD1V2hLbmclbstOp2y6UY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "/Users/gohyeoncheol/Documents/insta_clone/UMC_Android_Instagram_clone_coding"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7ed2507e-adf5-4344-b286-7140053f22bc" name="Changes" comment="" />
+      <created>1702917931089</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702917931089</updated>
+    </task>
+    <servers />
+  </component>
+</project>
