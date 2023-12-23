@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--    릴스 내용   -->
+    <ImageView
+        android:id="@+id/item_reels_post_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/reels_1"/>
+
+<!--    오른쪽 버튼들     -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_reels_btns_layout"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/item_reels_song_layout">
+
+        <!--    좋아요 버튼   -->
+        <LinearLayout
+            android:id="@+id/item_reels_like_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/item_reels_like_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_like_btn"
+                app:tint="@color/white"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/item_reels_like_red_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_like_fill_btn"
+                app:tint="#F05161"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_reels_like_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="1.3만"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_reels_like_layout"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!--    댓글 버튼   -->
+        <ImageView
+            android:id="@+id/item_reels_comment_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_comment_btn"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_reels_like_num_tv"/>
+
+        <TextView
+            android:id="@+id/item_reels_comment_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="369"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_reels_comment_iv"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!--    공유 버튼   -->
+        <ImageView
+            android:id="@+id/item_reels_share_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_share_btn"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_reels_comment_num_tv"/>
+
+        <TextView
+            android:id="@+id/item_reels_share_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="369"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_reels_share_iv"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <!--    더보기 버튼  -->
+        <ImageView
+            android:id="@+id/item_reels_more_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_more_vertical"
+            app:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_reels_share_num_tv"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--  프로필 이미지  -->
+    <ImageView
+        android:id="@+id/item_reels_profile_iv"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/profile_ex1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/item_reels_contents_tv"/>
+<!--  유저명  -->
+    <TextView
+        android:id="@+id/item_reels_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="profile_name"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toEndOf="@id/item_reels_profile_iv"
+        app:layout_constraintTop_toTopOf="@id/item_reels_profile_iv"
+        app:layout_constraintBottom_toBottomOf="@id/item_reels_profile_iv"/>
+<!--  팔로우 버튼  -->
+    <TextView
+        android:id="@+id/item_reels_follow_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="팔로우"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:background="@drawable/reels_text_border"
+        app:layout_constraintStart_toEndOf="@id/item_reels_name_tv"
+        app:layout_constraintTop_toTopOf="@id/item_reels_profile_iv"
+        app:layout_constraintBottom_toBottomOf="@id/item_reels_profile_iv"/>
+<!--  본문 내용  -->
+    <TextView
+        android:id="@+id/item_reels_contents_tv"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="contents"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:singleLine="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/item_reels_song_layout"/>
+<!--  릴스 노래 영역  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_reels_song_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    <!--  노래 제목  -->
+        <TextView
+            android:id="@+id/item_reels_song_info_tv"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="♫ song title"
+            android:textColor="@color/white"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:scrollHorizontally="true"
+            android:background="@drawable/reels_song_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    <!--  노래 커버  -->
+        <ImageView
+            android:id="@+id/item_reels_song_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:src="@drawable/reels_song_cover1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
