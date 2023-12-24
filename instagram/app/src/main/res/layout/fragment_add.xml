@@ -3,14 +3,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <TextView
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_top_cl"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="add"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/add_close_iv"
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:src="@drawable/my_profile_close"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/black"/>
+
+        <TextView
+            android:id="@+id/add_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="새 게시물"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginStart="20sp"
+            app:layout_constraintTop_toTopOf="@id/add_close_iv"
+            app:layout_constraintStart_toEndOf="@id/add_close_iv"
+            app:layout_constraintBottom_toBottomOf="@id/add_close_iv"/>
+
+        <ImageView
+            android:id="@+id/add_select_iv"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/my_profile_select_off"
+            android:layout_marginEnd="10sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/main_blue" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/add_big_img_iv"
+        android:layout_width="match_parent"
+        android:layout_height="350sp"
+        app:layout_constraintTop_toBottomOf="@id/add_top_cl"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@id/add_mid_cl"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/add_mid_cl"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        app:layout_constraintTop_toBottomOf="@id/add_big_img_iv"
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:id="@+id/add_mid_recent_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최근"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginStart="15sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_dropdown"
+            android:layout_marginStart="8sp"
+            app:layout_constraintTop_toTopOf="@id/add_mid_cl"
+            app:layout_constraintBottom_toBottomOf="@id/add_mid_cl"
+            app:layout_constraintStart_toEndOf="@id/add_mid_recent_tv"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <GridView
+        android:id="@+id/add_image_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/add_mid_cl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:numColumns="4"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

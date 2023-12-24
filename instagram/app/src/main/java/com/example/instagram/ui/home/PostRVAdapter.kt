@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
-import com.example.instagram.data.ImageItem
+import com.example.instagram.data.entity.ImageItem
 import com.example.instagram.databinding.ItemHomePostBinding
 import me.relex.circleindicator.CircleIndicator3
 
