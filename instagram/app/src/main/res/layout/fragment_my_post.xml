@@ -5,13 +5,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
+        android:id="@+id/my_post_tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="post"
+        android:text="친구들과의 소중한 순간을 남겨보세요"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <TextView
+        android:id="@+id/my_post_tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="첫 게시물을 만들어보세요"
+        android:textColor="@color/main_blue"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/my_post_tv1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
