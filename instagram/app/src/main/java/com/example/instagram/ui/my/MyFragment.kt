@@ -115,6 +115,13 @@ class MyFragment : Fragment() {
         binding.myProfileEditTv.setOnClickListener {
             changeFragmentToProfileEdit()
         }
+        binding.myFollowerLl.setOnClickListener {
+            changeFragmentToFollow()
+        }
+        binding.myFollowingLl.setOnClickListener {
+            changeFragmentToFollow()
+
+        }
     }
     private fun changeFragmentToProfileEdit() {
 
@@ -129,4 +136,20 @@ class MyFragment : Fragment() {
             .replace(R.id.main_frame, profileEditFragment).addToBackStack(tag)
             .commitAllowingStateLoss()
     }
+
+    private fun changeFragmentToFollow() {
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frame,MyFollowFragment()).addToBackStack(tag)
+            .commitAllowingStateLoss()
+    }
+
+//    private fun changeFragmentToFollow(tabNum: Int) {
+//        (context as MainActivity).supportFragmentManager.beginTransaction()
+//            .replace(R.id.main_frame, MyFollowFragment().apply {
+//                arguments = Bundle().apply {
+//                    putInt("tabNum", tabNum)
+//                }
+//            })
+//            .commitAllowingStateLoss()
+//    }
 }
