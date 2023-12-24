@@ -15,20 +15,20 @@
         app:showAsAction="always"
         android:title="검색" />
     <item
+        android:id="@+id/shopFragment"
+        android:icon="@drawable/ic_btm_add"
+        app:showAsAction="always"
+        android:title="추가" />
+    <item
         android:id="@+id/reelsFragment"
         android:icon="@drawable/ic_btm_reels"
         app:showAsAction="always"
         android:title="릴스" />
     <item
-        android:id="@+id/shopFragment"
-        android:icon="@drawable/ic_btm_shop"
-        app:showAsAction="always"
-        android:title="쇼핑" />
-
-    <item
         android:id="@+id/myFragment"
-        android:icon="@drawable/ic_btm_shop"
+        android:icon="@drawable/post_abata_img"
         app:showAsAction="always"
-        android:title="내정보" />
+        android:title="내정보">
+    </item>
 
 </menu>

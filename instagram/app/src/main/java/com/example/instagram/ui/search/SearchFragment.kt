@@ -2,20 +2,15 @@ package com.example.instagram.ui.search
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
-import com.example.instagram.data.ImageItem
-import com.example.instagram.databinding.FragmentHomeBinding
-import com.example.instagram.databinding.FragmentReelsBinding
+import com.example.instagram.data.entity.ImageItem
 import com.example.instagram.databinding.FragmentSearchBinding
 import com.example.instagram.ui.main.MainActivity
 

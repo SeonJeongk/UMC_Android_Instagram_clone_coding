@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up to see photos and videos\nfrom your friends"
+            android:text="친구들의 사진과 동영상을 보려면\n가입하세요."
             android:gravity="center"
             android:textSize="23dp"
             android:textStyle="bold"
@@ -75,7 +75,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="OR"
+                android:text="또는"
                 android:layout_weight="6"
                 android:gravity="center"
                 android:textColor="@color/main_gray"/>
@@ -105,7 +105,7 @@
                 android:id="@+id/signup_id_et"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Phone number or email address"
+                android:hint="아이디"
                 android:textSize="15dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -125,13 +125,13 @@
                 android:id="@+id/signup_name_et"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Full name"
+                android:hint="실명"
                 android:textSize="15dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/signup_username_layout"
+            android:id="@+id/signup_email_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/main_blue"
             app:hintTextColor="@color/main_blue"
@@ -142,10 +142,10 @@
             android:layout_marginEnd="30dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signup_username_et"
+                android:id="@+id/signup_email_et"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Username"
+                android:hint="이메일"
                 android:textSize="15dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -170,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:inputType="textPassword"
-                android:hint="Password"
+                android:hint="비밀번호"
                 android:textSize="15dp"/>
 
 
@@ -184,18 +184,18 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/login_btn_color"
-            android:text="Sign up"
+            android:text="가입"
             android:textColor="@color/white"
             android:textSize="15sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="By signing up, you agree to our Terms, Data\nPolicy and Cookies Policy"
-            android:gravity="center"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:text="가입하면 Instagram의 약관, 데이터\n정책 및 쿠키 정책에 동의하게 됩니다" />
 
     </LinearLayout>
 
@@ -220,7 +220,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Have an account?"
+                android:text="계정이 있으신가요?"
                 android:layout_gravity="center"/>
 
             <TextView
@@ -228,7 +228,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/main_blue"
-                android:text=" Log in"
+                android:text=" 로그인"
                 android:layout_gravity="center"
                 android:textStyle="bold"/>
         </LinearLayout>
