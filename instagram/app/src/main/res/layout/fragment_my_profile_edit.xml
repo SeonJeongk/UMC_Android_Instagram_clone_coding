@@ -50,17 +50,26 @@
             app:layout_constraintTop_toBottomOf="@id/my_profile_title_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
-            <ImageView
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:src="@drawable/my_story_blank"
-                app:tint="@color/main_light_gray" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/my_profile_et_image_cd"
+                android:layout_width="80sp"
+                android:layout_height="80sp"
+                app:cardCornerRadius="1000dp">
+
+                <ImageView
+                    android:id="@+id/my_profile_et_image_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/my_story_blank"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+            </androidx.cardview.widget.CardView>
+
             <ImageView
                 android:layout_width="70sp"
                 android:layout_height="70sp"
                 android:layout_marginStart="20sp"
-                android:src="@drawable/my_story_blank"
-                app:tint="@color/main_light_gray"/>
+                android:src="@drawable/my_story_blank"/>
         </LinearLayout>
 
         <TextView

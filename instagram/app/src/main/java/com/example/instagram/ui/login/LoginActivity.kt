@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.instagram.data.entity.User
 import com.example.instagram.databinding.ActivityLoginBinding
 import com.example.instagram.ui.main.MainActivity
 import com.example.instagram.ui.signup.SignUpActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding
@@ -62,6 +64,4 @@ class LoginActivity : AppCompatActivity() {
         editor.putString("uid", uid)
         editor.apply()
     }
-
-
 }

@@ -23,6 +23,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun initBottomNavigation(){
 
+        val spf = getSharedPreferences("userInfo", MODE_PRIVATE)
+        val uid = spf.getString("uid", "")
+
+        val bundle = Bundle().apply {
+            putString("uid", uid)
+        }
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_frame, HomeFragment())
             .commitAllowingStateLoss()
@@ -56,9 +63,13 @@ class MainActivity : AppCompatActivity() {
                     return@setOnItemSelectedListener true
                 }
                 R.id.myFragment -> {
+                    val myFragment = MyFragment()
+                    myFragment.arguments = bundle // 번들을 프래그먼트에 설정
+
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frame, MyFragment())
+                        .replace(R.id.main_frame, myFragment)
                         .commitAllowingStateLoss()
+
                     return@setOnItemSelectedListener true
                 }
             }
