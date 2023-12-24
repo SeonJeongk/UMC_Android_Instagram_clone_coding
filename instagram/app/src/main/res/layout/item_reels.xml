@@ -40,10 +40,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_like_btn"
                 app:tint="@color/white"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:visibility="visible"/>
 
             <ImageView
                 android:id="@+id/item_reels_like_red_iv"
@@ -51,10 +48,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_like_fill_btn"
                 app:tint="#F05161"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                android:visibility="gone"/>
 
         </LinearLayout>
 
@@ -138,7 +132,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="20dp"
-        android:src="@drawable/profile_ex1"
+        android:src="@drawable/reels_profile_1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/item_reels_contents_tv"/>
 <!--  유저명  -->

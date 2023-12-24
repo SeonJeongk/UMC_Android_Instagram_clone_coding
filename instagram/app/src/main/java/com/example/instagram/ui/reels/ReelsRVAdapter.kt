@@ -1,6 +1,5 @@
 package com.example.instagram.ui.reels
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,7 @@ class ReelsRVAdapter() : RecyclerView.Adapter<ReelsRVAdapter.ViewHolder>() {
     )
     val profileImgData = arrayOf(
         ImageItem(R.drawable.post_abata_img),
-        ImageItem(R.drawable.profile_ex1)
+        ImageItem(R.drawable.reels_profile_1)
     )
     val nameData = arrayOf( "profile_1", "profile_2" )
     val contentsData = arrayOf(
@@ -32,7 +31,7 @@ class ReelsRVAdapter() : RecyclerView.Adapter<ReelsRVAdapter.ViewHolder>() {
     val songInfo = arrayOf( "♫ The Kid LAROI, Justin Bieber ⦁ STAY", "♫ profile_2 ⦁ 원본 오디오")
     val songCover = arrayOf(
         ImageItem(R.drawable.reels_song_cover1),
-        ImageItem(R.drawable.profile_ex1)
+        ImageItem(R.drawable.reels_profile_1)
     )
     // 좋아요, 팔로우 상태를 저장하는 리스트
     private val likeStates = mutableListOf<Boolean>()
