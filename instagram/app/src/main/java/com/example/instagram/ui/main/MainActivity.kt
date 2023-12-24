@@ -8,7 +8,7 @@ import com.example.instagram.ui.home.HomeFragment
 import com.example.instagram.ui.my.MyFragment
 import com.example.instagram.ui.reels.ReelsFragment
 import com.example.instagram.ui.search.SearchFragment
-import com.example.instagram.ui.shop.ShopFragment
+import com.example.instagram.ui.add.AddFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.shopFragment -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frame, ShopFragment())
+                        .replace(R.id.main_frame, AddFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
