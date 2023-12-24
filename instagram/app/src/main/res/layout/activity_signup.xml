@@ -105,7 +105,7 @@
                 android:id="@+id/signup_id_et"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="아이디"
+                android:hint="아이디(이메일)"
                 android:textSize="15dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -131,7 +131,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/signup_email_layout"
+            android:id="@+id/signup_username_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:boxStrokeColor="@color/main_blue"
             app:hintTextColor="@color/main_blue"
@@ -142,10 +142,10 @@
             android:layout_marginEnd="30dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signup_email_et"
+                android:id="@+id/signup_username_et"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="이메일"
+                android:hint="사용자 이름"
                 android:textSize="15dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
