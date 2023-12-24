@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.instagram.R
-import com.example.instagram.data.ImageItem
+import com.example.instagram.data.entity.ImageItem
 import com.example.instagram.databinding.ItemStoriesBinding
 
 class StoryRVAdapter() : RecyclerView.Adapter<StoryRVAdapter.ViewHolder>() {
