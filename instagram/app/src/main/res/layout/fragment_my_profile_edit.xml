@@ -1,6 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_profile_info_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10sp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginTop="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/my_profile_close_iv"
+            android:layout_width="60sp"
+            android:layout_height="60sp"
+            android:src="@drawable/my_profile_close"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tint="@color/black"/>
+        <TextView
+            android:id="@+id/my_profile_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="프로필 편집"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginStart="20sp"
+            app:layout_constraintTop_toTopOf="@id/my_profile_close_iv"
+            app:layout_constraintStart_toEndOf="@id/my_profile_close_iv"
+            app:layout_constraintBottom_toBottomOf="@id/my_profile_close_iv"/>
+        <ImageView
+            android:id="@+id/my_profile_select_iv"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/my_profile_select_off"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/main_blue" />
 
+        <LinearLayout
+            android:id="@+id/my_profile_image_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40sp"
+            app:layout_constraintTop_toBottomOf="@id/my_profile_title_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:src="@drawable/my_story_blank"
+                app:tint="@color/main_light_gray" />
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:layout_marginStart="20sp"
+                android:src="@drawable/my_story_blank"
+                app:tint="@color/main_light_gray"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/my_profile_edit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사진 또는 아바타 수정"
+            android:textColor="@color/main_blue"
+            android:layout_marginTop="20sp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/my_profile_image_ll"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+        <LinearLayout
+            android:id="@+id/my_profile_name_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/my_profile_edit_tv"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이름"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/my_profile_name_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/my_profile_username_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp"
+            app:layout_constraintTop_toBottomOf="@id/my_profile_name_ll"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용자 이름"
+                android:textSize="12sp"/>
+            <EditText
+                android:id="@+id/my_profile_username_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/my_profile_gender_pronouns_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp"
+            app:layout_constraintTop_toBottomOf="@id/my_profile_username_ll"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성별 대명사"
+                android:textSize="15sp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/my_profile_info_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10sp"
+            app:layout_constraintTop_toBottomOf="@id/my_profile_gender_pronouns_ll"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="소개"
+                android:textSize="15sp"/>
+            <EditText
+                android:id="@+id/my_profile_info_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/my_profile_add_link_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="링크 추가"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/my_profile_info_ll"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/my_profile_gender_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20sp"
+            app:layout_constraintTop_toBottomOf="@id/my_profile_add_link_tv"
+            app:layout_constraintStart_toStartOf="parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성별"
+                android:textSize="12sp"/>
+            <Spinner
+                android:id="@+id/my_profile_gender_sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"/>
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/my_profile_line_v1"
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/main_light_gray"
+        android:layout_marginTop="10sp"
+        app:layout_constraintTop_toBottomOf="@id/my_profile_info_cl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/my_profile_pro_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프로페셔널 계정으로 전환"
+        android:textSize="15sp"
+        android:textColor="@color/main_blue"
+        android:layout_marginTop="10sp"
+        app:layout_constraintTop_toBottomOf="@id/my_profile_line_v1"
+        app:layout_constraintStart_toStartOf="@id/my_profile_info_cl"/>
+    <View
+        android:id="@+id/my_profile_line_v2"
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/main_light_gray"
+        android:layout_marginTop="10sp"
+        app:layout_constraintTop_toBottomOf="@id/my_profile_pro_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+        android:id="@+id/my_profile_personal_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="개인정보 설정"
+        android:textSize="15sp"
+        android:textColor="@color/main_blue"
+        android:layout_marginTop="10sp"
+        app:layout_constraintTop_toBottomOf="@id/my_profile_line_v2"
+        app:layout_constraintStart_toStartOf="@id/my_profile_info_cl"/>
+
+    <View
+        android:id="@+id/my_profile_line_v3"
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/main_light_gray"
+        android:layout_marginTop="10sp"
+        app:layout_constraintTop_toBottomOf="@id/my_profile_personal_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
