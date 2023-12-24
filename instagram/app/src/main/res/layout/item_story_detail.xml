@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--  스토리 내용  -->
+    <ImageView
+        android:id="@+id/story_post_iv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.9"
+        android:scaleType="centerCrop"
+        android:src="@drawable/reels_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!--  스토리 1개일 때 진행도  -->
+    <SeekBar
+        android:id="@+id/story_progress_sb"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
+        android:progress="50"
+        android:background="@null"
+        android:progressBackgroundTint="#737373"
+        android:progressTint="@color/white"
+        android:thumb="@color/transparent"
+        android:max="100"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!--  프로필 영역  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/story_profile_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/story_progress_sb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <!--  프로필 이미지  -->
+        <ImageView
+            android:id="@+id/story_profile_iv"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/home_profile_ex1"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <!--  유저명  -->
+        <TextView
+            android:id="@+id/story_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="profile_name"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/story_profile_iv"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <!--  작성 시간  -->
+        <TextView
+            android:id="@+id/story_time_num_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="n"
+            android:textColor="@color/main_gray"
+            app:layout_constraintStart_toEndOf="@id/story_name_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/story_time_unit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간"
+            android:textColor="@color/main_gray"
+            app:layout_constraintStart_toEndOf="@id/story_time_num_tv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <!--  더보기 버튼  -->
+        <ImageView
+            android:id="@+id/story_more_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_more_vertical"
+            app:tint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/story_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.1"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/story_post_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <!--    메세지 보내기    -->
+        <TextView
+            android:id="@+id/story_message_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent="0.7"
+            android:layout_marginStart="20dp"
+            android:text="메시지 보내기"
+            android:textColor="@color/white"
+            android:background="@drawable/story_text_border"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <!--    좋아요 버튼   -->
+        <LinearLayout
+            android:id="@+id/story_like_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toStartOf="@id/story_share_iv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/story_like_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_like_btn"
+                app:tint="@color/white"
+                android:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/story_like_red_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_like_fill_btn"
+                app:tint="#F05161"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <!--    공유 버튼   -->
+        <ImageView
+            android:id="@+id/story_share_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_share_btn"
+            app:tint="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

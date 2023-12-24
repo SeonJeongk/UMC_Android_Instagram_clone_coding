@@ -22,6 +22,7 @@ class PostRVAdapter() : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
     val likeNum = arrayOf( "30,278", "345,689", "56", "146", "789" )
     val commentNum = arrayOf( "1,234", "2,467", "10", "39", "368" )
     val contents = arrayOf( "우산 쓰고 이쁘지", "강아지 귀엽지", "나 치명적이지", "머리잘랐다^^", "냅다 귀엽지" )
+    val date = arrayOf( "10분 전", "1시간 전", "4시간 전", "12월 23일", "12월 20일")
 
     // 각 position 별로 이미지 List를 다르게 넘겨준다
     val postImageLists = arrayListOf(
@@ -57,6 +58,7 @@ class PostRVAdapter() : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
             binding.itemHomePostLikeNumTv.text = likeNum[position]    // 좋아요 수
             binding.itemHomePostCommentNumTv.text = commentNum[position]    // 댓글 수
             binding.itemHomePostContentsTv.text = contents[position]    // 본문 내용
+            binding.itemHomePostDateTv.text = date[position]    // 날짜
 
             // 게시글 이미지 ViewPager와 indicator 설정
             val postAdapter = PostVPAdapter(itemView.context, postImageLists[position])
