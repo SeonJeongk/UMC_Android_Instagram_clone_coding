@@ -1,5 +1,6 @@
 package com.example.instagram.ui.my
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -7,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.instagram.R
 import com.example.instagram.databinding.FragmentHomeBinding
@@ -14,6 +16,7 @@ import com.example.instagram.databinding.FragmentMyBinding
 import com.example.instagram.databinding.FragmentReelsBinding
 import com.example.instagram.ui.main.MainActivity
 import com.example.instagram.ui.search.SearchDatailFragment
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MyFragment : Fragment() {
