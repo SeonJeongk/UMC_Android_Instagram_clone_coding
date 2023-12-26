@@ -1,5 +1,6 @@
 package com.example.instagram.ui.my
 
+import android.content.Context
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.Handler
@@ -18,6 +19,7 @@ import com.example.instagram.databinding.FragmentMyBinding
 import com.example.instagram.databinding.FragmentReelsBinding
 import com.example.instagram.ui.main.MainActivity
 import com.example.instagram.ui.search.SearchDatailFragment
+import com.example.instagram.utils.loading.LoadingDialog
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.database.DataSnapshot
@@ -31,7 +33,16 @@ class MyFragment : Fragment() {
         R.drawable.ic_vector,
         R.drawable.ic_union
     )
+    lateinit var mainActivity: MainActivity
 
+    val db = FirebaseFirestore.getInstance()
+    private lateinit var dialog:LoadingDialog
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        mainActivity = context as MainActivity
+        dialog = LoadingDialog(mainActivity)
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,31 +61,25 @@ class MyFragment : Fragment() {
             tab, position ->
             tab.setIcon(information[position])
         }.attach()
-        getUserInfo(uid.toString())
+        getUserInfo(uid.toString())  //새로 가져오기
 
         clickListener()
 
         return binding.root
     }
-
-    override fun onResume() {
-        super.onResume()
-        getUserInfo(uid.toString())  //새로 가져오기
-    }
     private fun getUserInfo(uid : String){
-        val db = FirebaseFirestore.getInstance()
 
         val documentRef = db.collection("clients").document(uid)
-
+        dialog.show() //loading dialog
         documentRef.get()
             .addOnSuccessListener { documentSnapshot ->
                 val user: User? = documentSnapshot.toUser()
 
                 if (user != null) {
                     // 사용자 객체를 사용할 수 있습니다.
-
                     Log.d("Firestore", user.toString())
                     profileEdit(user)
+                    dialog.dismiss()
                 } else {
                     // 변환에 실패하거나 문서가 존재하지 않는 경우
                     Log.d("Firestore", "Failed to convert DocumentSnapshot to User")
@@ -139,17 +144,8 @@ class MyFragment : Fragment() {
 
     private fun changeFragmentToFollow() {
         (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frame,MyFollowFragment()).addToBackStack(tag)
+            .replace(R.id.main_frame,MyFollowFragment())
             .commitAllowingStateLoss()
     }
 
-//    private fun changeFragmentToFollow(tabNum: Int) {
-//        (context as MainActivity).supportFragmentManager.beginTransaction()
-//            .replace(R.id.main_frame, MyFollowFragment().apply {
-//                arguments = Bundle().apply {
-//                    putInt("tabNum", tabNum)
-//                }
-//            })
-//            .commitAllowingStateLoss()
-//    }
 }

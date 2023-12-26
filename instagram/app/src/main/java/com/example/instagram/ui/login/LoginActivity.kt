@@ -10,19 +10,19 @@ import com.example.instagram.databinding.ActivityLoginBinding
 import com.example.instagram.ui.home.PostRVAdapter
 import com.example.instagram.ui.main.MainActivity
 import com.example.instagram.ui.signup.SignUpActivity
+import com.example.instagram.utils.loading.LoadingDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding : ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var dialog: LoadingDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
-
+        dialog = LoadingDialog(this)
         auth = FirebaseAuth.getInstance()
-
-
 
         clickBtn()
 
@@ -35,7 +35,6 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(id, pwd)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "로그인 완료", Toast.LENGTH_LONG).show()
                     val user = auth.currentUser
                     saveUid(user!!.uid)
                     startMainActivity()
@@ -50,12 +49,14 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.loginLoginBtn.setOnClickListener {
+            dialog.show()
             login()
         }
     }
 
     private fun startMainActivity() {
         val intent =Intent(this, MainActivity::class.java)
+        dialog.dismiss()
         startActivity(intent)
         finish() // LoginActivity를 종료하여 뒤로 가기 버튼으로 돌아가지 않도록 함
     }
