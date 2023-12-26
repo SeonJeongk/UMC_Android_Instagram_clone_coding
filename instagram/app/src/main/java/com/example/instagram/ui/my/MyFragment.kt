@@ -40,7 +40,7 @@ class MyFragment : Fragment() {
         binding = FragmentMyBinding.inflate(layoutInflater)
 
         uid = arguments?.getString("uid")
-        Log.d("uid",uid.toString())
+        Log.d("uid myfragment",uid.toString())
 
         // ViewPager Adapter 연결
         val myVPAdapter = MyVPAdapter(this)

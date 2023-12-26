@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import com.example.instagram.data.entity.User
 import com.example.instagram.databinding.ActivityLoginBinding
+import com.example.instagram.ui.home.PostRVAdapter
 import com.example.instagram.ui.main.MainActivity
 import com.example.instagram.ui.signup.SignUpActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -56,6 +57,7 @@ class LoginActivity : AppCompatActivity() {
     private fun startMainActivity() {
         val intent =Intent(this, MainActivity::class.java)
         startActivity(intent)
+        finish() // LoginActivity를 종료하여 뒤로 가기 버튼으로 돌아가지 않도록 함
     }
     private fun saveUid(uid:String) {
         val spf = getSharedPreferences("userInfo", MODE_PRIVATE)
