@@ -51,8 +51,7 @@ class MyFragment : Fragment() {
         binding = FragmentMyBinding.inflate(layoutInflater)
 
         uid = arguments?.getString("uid")
-        getUserInfo(uid.toString())  //새로 가져오기
-        Log.d("uid",uid.toString())
+        Log.d("uid myfragment",uid.toString())
 
         // ViewPager Adapter 연결
         val myVPAdapter = MyVPAdapter(this)
@@ -62,6 +61,7 @@ class MyFragment : Fragment() {
             tab, position ->
             tab.setIcon(information[position])
         }.attach()
+        getUserInfo(uid.toString())  //새로 가져오기
 
         clickListener()
 
