@@ -18,6 +18,7 @@ import com.example.instagram.R
 import com.example.instagram.data.entity.User
 import com.example.instagram.databinding.FragmentMyProfileEditBinding
 import com.example.instagram.ui.main.MainActivity
+import com.example.instagram.utils.loading.LoadingDialog
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -26,17 +27,19 @@ import com.google.firebase.storage.FirebaseStorage
 class MyProfileEditFragment : Fragment() {
     private lateinit var binding : FragmentMyProfileEditBinding
     private val GALLARY_CODE:Int= 10
-    private lateinit var uri: Uri
+    private var uri: Uri? =null
     private var uid : String? = ""
     private var img : String? = ""
     private lateinit var storage : FirebaseStorage
     private lateinit var user:User
     lateinit var mainActivity: MainActivity
+    private lateinit var dialog: LoadingDialog
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
         mainActivity = context as MainActivity
+        dialog = LoadingDialog(mainActivity)
     }
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,11 +65,12 @@ class MyProfileEditFragment : Fragment() {
         }
 
         binding.myProfileSelectIv.setOnClickListener {
+            dialog.show()
             user.name = binding.myProfileNameEt.text.toString()
             user.username = binding.myProfileUsernameEt.text.toString()
             user.profile_info = binding.myProfileInfoEt.text.toString()
-            imageUpload(uri)
-            changeFragmentToMy()
+            if(uri !=null) imageUpload(uri!!)
+            else setUserInfo(uid.toString())
         }
 
         binding.myProfileEditTv.setOnClickListener {
@@ -138,6 +142,8 @@ class MyProfileEditFragment : Fragment() {
         documentRef.update(newData)
             .addOnSuccessListener {
                 Log.d("Firebase", "Document updated successfully!")
+                dialog.dismiss()
+                changeFragmentToMy()
             }
             .addOnFailureListener { exception ->
                 // 오류 처리
@@ -167,35 +173,30 @@ class MyProfileEditFragment : Fragment() {
         // 기존 파일 삭제
         mountainsRef.delete().addOnCompleteListener { task ->
             if (task.isSuccessful) {
-                // 파일 삭제 성공
                 // 새로운 파일 업로드
                 val uploadTask = mountainsRef.putFile(uri)
                 uploadTask.addOnSuccessListener { taskSnapshot ->
                     // 파일 업로드 성공
-                    Toast.makeText(getActivity(), "사진 업로드 성공", Toast.LENGTH_SHORT).show()
                     mountainsRef.downloadUrl.addOnSuccessListener { downloadUri ->
                         img = downloadUri.toString()
                         Log.d("img", img.toString())
                         setUserInfo(uid.toString())
                     }.addOnFailureListener { e ->
                         // 파일 업로드 실패
-                        Toast.makeText(getActivity(), "사진 업로드 실패", Toast.LENGTH_SHORT).show()
                     }
                 }
             } else {
                 // 파일 삭제 실패->파일 없음
-                Toast.makeText(getActivity(), "파일 삭제 실패", Toast.LENGTH_SHORT).show()
                 val uploadTask = mountainsRef.putFile(uri)
                 uploadTask.addOnSuccessListener { taskSnapshot ->
                     // 파일 업로드 성공
-                    Toast.makeText(getActivity(), "사진 업로드 성공", Toast.LENGTH_SHORT).show()
                     mountainsRef.downloadUrl.addOnSuccessListener { downloadUri ->
                         img = downloadUri.toString()
                         Log.d("img", img.toString())
                         setUserInfo(uid.toString())
+                        changeFragmentToMy()
                     }.addOnFailureListener { e ->
                         // 파일 업로드 실패
-                        Toast.makeText(getActivity(), "사진 업로드 실패", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -203,8 +204,16 @@ class MyProfileEditFragment : Fragment() {
     }
 
     private fun changeFragmentToMy() {
+
+        val bundle = Bundle().apply {
+            putString("uid", uid)
+        }
+        val myProfile = MyFragment()
+        // 프래그먼트에 번들 설정
+        myProfile.arguments = bundle
+
         (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frame, MyFragment()).addToBackStack(tag)
+            .replace(R.id.main_frame, myProfile).addToBackStack(tag)
             .commitAllowingStateLoss()
     }
 
