@@ -4,22 +4,24 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.instagram.R
 import com.example.instagram.data.entity.ImageItem
+import com.example.instagram.data.entity.InstaDatabase
+import com.example.instagram.data.entity.Like
 import com.example.instagram.data.entity.User
 import com.example.instagram.databinding.ItemHomePostBinding
-import com.example.instagram.ui.main.MainActivity
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import me.relex.circleindicator.CircleIndicator3
-import org.w3c.dom.Comment
 
 class PostRVAdapter(private val context: Context, private val uid: String?) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
+
+    lateinit var user : User
 
     // 더미 데이터
     val profileImgData = arrayOf(
@@ -35,7 +37,7 @@ class PostRVAdapter(private val context: Context, private val uid: String?) : Re
     val contents = arrayOf( "우산 쓰고 이쁘지", "강아지 귀엽지", "나 치명적이지", "머리잘랐다^^", "냅다 귀엽지" )
     val date = arrayOf( "10분 전", "1시간 전", "4시간 전", "12월 23일", "12월 20일")
 
-    // 각 position 별로 이미지 List를 다르게 넘겨준다
+    // 게시글 이미지 : 각 position 별로 이미지 List를 다르게 넘겨준다
     val postImageLists = arrayListOf(
         arrayListOf(R.drawable.post_1, R.drawable.post_12, R.drawable.post_14),
         arrayListOf(R.drawable.post_12, R.drawable.post_6),
@@ -44,14 +46,20 @@ class PostRVAdapter(private val context: Context, private val uid: String?) : Re
         arrayListOf(R.drawable.post_14, R.drawable.post_1, R.drawable.post_12)
     )
 
-    lateinit var user : User
+    // 졸아요 상태 DB
+    lateinit var likeDB: InstaDatabase
+    lateinit var like: Like
+    private val isLiked = mutableListOf<Boolean>()
+    init {
+        // 초기 상태 설정
+        isLiked.addAll(List(profileImgData.size) { false })
+    }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PostRVAdapter.ViewHolder {
         val binding: ItemHomePostBinding = ItemHomePostBinding.inflate(
             LayoutInflater.from(viewGroup.context),
             viewGroup,
             false)
-        Log.d("호출 확인", "onCreateViewHolder")
 
         return ViewHolder(binding)  //item view 객체 return
     }
@@ -60,7 +68,7 @@ class PostRVAdapter(private val context: Context, private val uid: String?) : Re
 
     override fun onBindViewHolder(holder: PostRVAdapter.ViewHolder, position: Int) {
         holder.bind(position)
-        Log.d("호출 확인", "onBindViewHolder")
+
         if (uid != null) {
             val db = FirebaseFirestore.getInstance()
             val documentRef = db.collection("clients").document(uid!!)
@@ -75,22 +83,78 @@ class PostRVAdapter(private val context: Context, private val uid: String?) : Re
                             .circleCrop()
                             .into(holder.binding.itemHomePostCommentProfileIv)
                     } else {
-                        // 기본 이미지 또는 에러 처리 등을 수행하도록 원하는 로직을 추가하세요.
+                        // 이미지가 없다면 기본 이미지 띄움
                         holder.binding.itemHomePostCommentProfileIv.setImageResource(R.drawable.my_story_blank)
                     }
                 }
                 .addOnFailureListener { exception ->
-                    // 오류 처리
-                    Log.e("Firestore", "Error getting document: ", exception)
+                    Log.e("Firestore", "Error getting document: ", exception)   // 오류 처리
                 }
         } else {
             Log.d("Firestore - Post", "Invalid uid: $uid")
             holder.binding.itemHomePostCommentProfileIv.setImageResource(R.drawable.my_story_blank)
         }
+
+        // 좋아요 상태 가져와 화면에 적용
+        isLiked[position] = getLikeStatus(position)
+
+        if(isLiked[position]){
+            // 이전에 좋아요 누름
+            holder.binding.itemHomePostLikeIv.visibility = View.GONE
+            holder.binding.itemHomePostLikeRedIv.visibility = View.VISIBLE
+        } else{
+            // 이전에 좋아요 안 누름
+            holder.binding.itemHomePostLikeIv.visibility = View.VISIBLE
+            holder.binding.itemHomePostLikeRedIv.visibility = View.GONE
+        }
+
+        // 좋아요 클릭 이벤트ㅅ
+        holder.binding.itemHomePostLikeLayout.setOnClickListener{  // 좋아요 버튼
+            if(isLiked[position]){
+                // 좋아요 취소
+                holder.binding.itemHomePostLikeIv.visibility = View.VISIBLE
+                holder.binding.itemHomePostLikeRedIv.visibility = View.GONE
+
+                isLiked[position] = !isLiked[position]  // false
+                updateLikeStatus(position, isLiked[position])
+            }else {
+                // 좋아요 눌림
+                holder.binding.itemHomePostLikeIv.visibility = View.GONE
+                holder.binding.itemHomePostLikeRedIv.visibility = View.VISIBLE
+
+                isLiked[position] = !isLiked[position]  // true
+                updateLikeStatus(position, isLiked[position])
+            }
+        }
+
+        // 댓글 클릭 이벤트
+        holder.binding.itemHomePostCommentIv.setOnClickListener{
+            showBottomSheet()
+        }
         holder.binding.itemHomePostCommentLayout.setOnClickListener {
             showBottomSheet()
         }
     }
+
+    // 좋아요 상태 초기화
+    private fun getLikeStatus(postId: Int): Boolean {
+        val database = InstaDatabase.getInstance(context)
+
+        // 좋아요 상태를 돌려줌
+        return database?.likeDao()?.getLikeState(uid!!, postId) ?: false
+    }
+
+    // 좋아요 상태 변경
+    private fun updateLikeStatus(postId: Int, isLiked: Boolean) {
+        val database = InstaDatabase.getInstance(context)
+
+        if (isLiked) {
+            database?.likeDao()?.insert(Like(uid!!, postId, true))
+        } else {
+            database?.likeDao()?.deleteLikedPost(uid!!, postId)
+        }
+    }
+
     private fun showBottomSheet() {
         val bottomSheetFragment = CommentBottomFragment()
         bottomSheetFragment.arguments = Bundle().apply {
@@ -100,7 +164,6 @@ class PostRVAdapter(private val context: Context, private val uid: String?) : Re
         bottomSheetFragment.show((context as AppCompatActivity).supportFragmentManager, bottomSheetFragment.tag)
     }
 
-    // MyFragment 클래스 내부 또는 동일한 파일에 추가
     fun DocumentSnapshot.toUser(): User? {
         return try {
             Log.d("호출 확인", "DocumentSnapshot")
@@ -113,7 +176,7 @@ class PostRVAdapter(private val context: Context, private val uid: String?) : Re
 
             User(email, name, profile_img, profile_info, uid, username)
         } catch (e: Exception) {
-            null // 변환에 실패한 경우 null 반환 또는 예외 처리를 수행할 수 있습니다.
+            null // 변환에 실패한 경우 null 반환
         }
     }
 
