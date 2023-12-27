@@ -40,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
                     startMainActivity()
                 } else {
                     Toast.makeText(this, "로그인 실패", Toast.LENGTH_LONG).show()
+                    dialog.dismiss()
                 }
             }
     }
