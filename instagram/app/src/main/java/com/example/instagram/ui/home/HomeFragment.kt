@@ -27,11 +27,6 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        initRecyclerview()
-    }
-
     private fun initRecyclerview(){
         val storyRVAdapter = StoryRVAdapter()
         var postRVAdapter = PostRVAdapter(requireContext(),null)

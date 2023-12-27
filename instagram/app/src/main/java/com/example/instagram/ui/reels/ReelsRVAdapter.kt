@@ -74,13 +74,13 @@ class ReelsRVAdapter() : RecyclerView.Adapter<ReelsRVAdapter.ViewHolder>() {
                 holder.binding.itemReelsLikeIv.visibility = View.VISIBLE
                 holder.binding.itemReelsLikeRedIv.visibility = View.GONE
                 likeStates[position] = false
-                //Log.d("like", "좋아요 취소됨 : " + likeStates[position])
+                //Log.d("Like", "좋아요 취소됨 : " + likeStates[position])
             }else {
                 // 좋아요 눌림
                 holder.binding.itemReelsLikeIv.visibility = View.GONE
                 holder.binding.itemReelsLikeRedIv.visibility = View.VISIBLE
                 likeStates[position] = true
-                //Log.d("like", "좋아요 눌림 : " + likeStates[position])
+                //Log.d("Like", "좋아요 눌림 : " + likeStates[position])
             }
         }
     }
