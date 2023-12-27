@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
 
     private fun initRecyclerview(){
         val storyRVAdapter = StoryRVAdapter()
-        var postRVAdapter = PostRVAdapter(null)
+        var postRVAdapter = PostRVAdapter(requireContext(),null)
 
         // SharedPreferences에 저장된 uid 가져오기
         val spf = requireContext().getSharedPreferences("userInfo", MODE_PRIVATE)
@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
 
         // PostRVAdapter에 uid 전달
         uid?.let {
-            postRVAdapter = PostRVAdapter(it)
+            postRVAdapter = PostRVAdapter(requireContext(),it)
         }
 
         binding.homeStoryRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

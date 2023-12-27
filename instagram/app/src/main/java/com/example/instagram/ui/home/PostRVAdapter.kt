@@ -1,19 +1,25 @@
 package com.example.instagram.ui.home
 
+import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.instagram.R
 import com.example.instagram.data.entity.ImageItem
 import com.example.instagram.data.entity.User
 import com.example.instagram.databinding.ItemHomePostBinding
+import com.example.instagram.ui.main.MainActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import me.relex.circleindicator.CircleIndicator3
+import org.w3c.dom.Comment
 
-class PostRVAdapter(private val uid: String?) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
+class PostRVAdapter(private val context: Context, private val uid: String?) : RecyclerView.Adapter<PostRVAdapter.ViewHolder>() {
 
     // 더미 데이터
     val profileImgData = arrayOf(
@@ -38,6 +44,8 @@ class PostRVAdapter(private val uid: String?) : RecyclerView.Adapter<PostRVAdapt
         arrayListOf(R.drawable.post_14, R.drawable.post_1, R.drawable.post_12)
     )
 
+    lateinit var user : User
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PostRVAdapter.ViewHolder {
         val binding: ItemHomePostBinding = ItemHomePostBinding.inflate(
             LayoutInflater.from(viewGroup.context),
@@ -59,7 +67,7 @@ class PostRVAdapter(private val uid: String?) : RecyclerView.Adapter<PostRVAdapt
 
             documentRef.get()
                 .addOnSuccessListener { documentSnapshot ->
-                    val user: User? = documentSnapshot.toUser()
+                    user= documentSnapshot.toUser()!!
 
                     if (!user?.profile_img.isNullOrEmpty()) {
                         Glide.with(holder.itemView.context)
@@ -79,6 +87,17 @@ class PostRVAdapter(private val uid: String?) : RecyclerView.Adapter<PostRVAdapt
             Log.d("Firestore - Post", "Invalid uid: $uid")
             holder.binding.itemHomePostCommentProfileIv.setImageResource(R.drawable.my_story_blank)
         }
+        holder.binding.itemHomePostCommentLayout.setOnClickListener {
+            showBottomSheet()
+        }
+    }
+    private fun showBottomSheet() {
+        val bottomSheetFragment = CommentBottomFragment()
+        bottomSheetFragment.arguments = Bundle().apply {
+            putString("img", user.profile_img)
+            putString("username", user.username)
+        }
+        bottomSheetFragment.show((context as AppCompatActivity).supportFragmentManager, bottomSheetFragment.tag)
     }
 
     // MyFragment 클래스 내부 또는 동일한 파일에 추가

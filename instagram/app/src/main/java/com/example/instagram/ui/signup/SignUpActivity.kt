@@ -7,16 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.instagram.data.entity.User
 import com.example.instagram.databinding.ActivitySignupBinding
 import com.example.instagram.ui.login.LoginActivity
+import com.example.instagram.utils.loading.LoadingDialog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class SignUpActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySignupBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var dialog: LoadingDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         auth = FirebaseAuth.getInstance()
+        dialog = LoadingDialog(this)
         clickbtn()
 
         setContentView(binding.root)
@@ -37,6 +40,7 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
     private fun createUser() {
+        dialog.show()
         val id:String = binding.signupIdEt.text.toString()
         val name:String = binding.signupNameEt.text.toString()
         val username:String = binding.signupUsernameEt.text.toString()
@@ -46,13 +50,16 @@ class SignUpActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     Toast.makeText(this, "회원가입 성공", Toast.LENGTH_SHORT).show()
                     inputUserInfo(task.result.user?.let { User(id,name,null,null, it.uid, username ) })
+                    dialog.dismiss()
                     finish()
                 } else {
                     Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
                 }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "회원가입 실패", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
             }
     }
     private fun clickbtn() {
